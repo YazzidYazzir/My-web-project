@@ -1,0 +1,28 @@
+<button onclick="Onclick()">Clickmee</button>
+<script>
+    function Onclick() {
+        alert("Wxabaa lagu soo hirataa ye maxaa kasoo hreeyay");
+    }
+</script>
+<br><br>
+
+
+<form onsubmit="return validateForm()">
+    <input type="text" id="user Name" placeholder="Enter you Name">
+    <br> <br>
+
+    <input type="submit" value="submit">
+</form>
+
+<script>
+    function validateForm() {
+         let name = 
+        document.getElementById("user Name").value;
+    if (name === "") {
+        alert("Please enter your name.");
+        return false;
+    }
+    return true;
+        
+    }
+</script>

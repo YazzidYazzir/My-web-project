@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home worke!!</title>
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-color: #ecf0f1;
+      --text-color: #333;
+      --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: #c0dbe2;
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .heading {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .heading h2 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    .heading p {
+      color: var(--text-color);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .box {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      text-align: center;
+      overflow: hidden;
+    }
+    .box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    .box-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: rgba(52, 152, 219, 0.1);
+      color: var(--secondary-color);
+    }
+    .box img {
+      width: 100%;
+      max-width: 220px;
+      margin: 1rem auto;
+      border-radius: 10px;
+      display: block;
+      transition: transform 0.4s ease-in-out;
+    }
+    /* Hover effect for images */
+    .box:hover img {
+      transform: scale(1.08);
+    }
+    .box h3 {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    .box p {
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--secondary-color);
+      color: rgb(253, 253, 253);
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      border: 2px solid var(--secondary-color);
+    }
+    .btn:hover {
+      background: transparent;
+      color: var(--secondary-color);
+    }
+    @media (max-width: 768px) {
+      .boxes {
+        grid-template-columns: 1fr;
+      }
+    }
+    .A {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: black;
+    }
+
+
+    .P{
+      text-align: center;
+      color: white;
+      font-size: small;
+      font-style: italic;
+      background-color: #535050;
+    }
+    .background {
+      position: relative;
+      overflow: hidden;
+    }
+
+  
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="heading">
+      <h2 class="H">Our Corsese.</h2>
+      <p class="A">MATAHAY ARDAXIISEYA CULUUMTA ITGA AM MARABTAA <br> IN SIXEEL DHEER UBARATO CORSE AAD XIISAY-NAYSO.!!!</p>
+    </div>
+
+    <div class="boxes">
+      <!-- Web Development -->
+      <div class="box">
+        <div class="box-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <img src="web-dev.jpg" alt="Web Development">
+        <h3>Web Development</h3>
+        <p>Hadii aad tahay arday xiisanay Web <br>Development ama Daneenaya aqoonta web development. <br> Halkan waxaad ka helikartaa Casharo courska ku saabsan</p>
+        <a href="#" class="btn">Fadlan is diwaan gali</a>
+      </div>
+
+      <!-- Database -->
+      <div class="box">
+        <div class="box-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <img src="Data.jpg" alt="Database SQL">
+        <h3>Data Base (SQL)</h3>
+        <p>Hadii aad tahay arday xiisanaya barasha Data Base am hamigaagu yahay inad meel kagadho Aqonta sida xogta lookaydiyo<br> Cores kani waa kii adiga logu talagay.</p>
+        <a href="#" class="btn">Fadlan is diwaan gali</a>
+      </div>
+
+      <!-- Networking -->
+      <div class="box">
+        <div class="box-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <img src="Net-working.jpg" alt="Networking">
+        <h3>Net Working</h3>
+        <p>Hadii aad tahay arday xiisanay barasha cilmiga net working. <br> Corse kani waa kii adiga logu talagay.</p>
+        <a href="#" class="btn">Fadlan is diwan gali</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

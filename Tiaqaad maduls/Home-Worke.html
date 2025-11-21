@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Assegment Multiple Teble</title>
+  <style>
+    :root{ --bg:#98b6d5; --card:#ffffff; --muted:#5b6b77; --accent:#0ea5a4; --glass: rgba(2,6,23,0.04)}
+    *{box-sizing:border-box}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; margin:18px; background:var(--bg); color:#072226}
+    .wrap{max-width:920px;margin:0 auto}
+    h1{font-size:1.2rem;margin:0 0 8px}
+    p.muted{color:var(--muted); margin:0 0 14px}
+    .controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+    .controls button{
+      background:var(--card); border:1px solid var(--glass); padding:8px 10px; border-radius:8px; cursor:pointer;
+      box-shadow:0 4px 10px rgba(2,6,23,0.06); font-weight:600;
+    }
+    .controls button.active{background:linear-gradient(180deg,#ccfbf1,#bbf7d0); border-color:rgba(14,165,164,.25)}
+    .actions{margin-top:8px; display:flex; gap:8px; align-items:center}
+    #output{background:var(--card); padding:14px; border-radius:12px; box-shadow:0 8px 20px rgba(2,6,23,0.06)}
+    ul.table-list{list-style:none;padding:0;margin:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px}
+    li.row{padding:8px 10px; background: #f8fffe; border-radius:8px; display:flex; justify-content:space-between; align-items:center}
+    .note{font-size:.9rem;color:var(--muted); margin-top:10px}
+    @media (max-width:520px){ ul.table-list{grid-template-columns:1fr} }
+
+    #output{
+      background-color: #86add4;
+    }
+
+    body{
+      background-color: #072226;
+    }
+
+    #btn-all{
+      background-color: #13a44b;
+    }
+
+    #btn-clear{
+      background-color: rgb(192, 70, 70);
+    }
+    h1{
+      background-color: #e7dbc2ac;
+      text-align: center;
+      font-style: italic;
+      font: optional;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    .Tab{
+      font-style: italic;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    .muted{
+      font-style: italic;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>JADWALKA IS-KU DHUFASHADA 1 ILA 12</h1>
+    <p class="muted">Halkan ka Dooro Tiraad U bahan Tay:</p>
+
+    <div class="controls" id="buttons">
+    </div>
+
+    <div class="actions">
+      <button id="btn-all">Show All</button>
+      <button id="btn-clear">Clear</button>
+      <label style="margin-left:auto; color:var(--muted)"><input type="checkbox" id="logConsole" checked> Log console</label>
+    </div>
+
+    <div id="output" aria-live="polite">
+      <p class="Tab">Waxba maad Dooran.!!!!!!!</p>
+    </div>
+
+    
+  </div>
+
+  <script>
+    const btnContainer = document.getElementById('buttons');
+    const output = document.getElementById('output');
+    const btnAll = document.getElementById('btn-all');
+    const btnClear = document.getElementById('btn-clear');
+    const logConsoleChk = document.getElementById('logConsole');
+
+    for (let n = 1; n <= 12; n++) {
+      const b = document.createElement('button');
+      b.textContent = n;
+      b.dataset.num = n;
+      b.addEventListener('click', () => showSection(parseInt(b.dataset.num, 10), b));
+      btnContainer.appendChild(b);
+    }
+
+    function showSection(number, btnEl) {
+      Array.from(btnContainer.children).forEach(x => x.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+
+      output.innerHTML = '';
+      const title = document.createElement('h2');
+      title.textContent = `Jadwalka ${number} × (1..12)`;
+      output.appendChild(title);
+
+      const ul = document.createElement('ul');
+      ul.className = 'table-list';
+      for (let i = 1; i <= 12; i++) {
+        const li = document.createElement('li');
+        li.className = 'row';
+        li.innerHTML = `<span>${number} × ${i}</span><strong>${number * i}</strong>`;
+        ul.appendChild(li);
+      }
+      output.appendChild(ul);
+
+      if (logConsoleChk.checked) {
+        console.group(`Jadwalka ${number}`);
+        for (let i = 1; i <= 12; i++) {
+          console.log(`${number} x ${i} = ${number * i}`);
+        }
+        console.groupEnd();
+      }
+    }
+
+    btnAll.addEventListener('click', () => {
+      Array.from(btnContainer.children).forEach(x => x.classList.remove('active'));
+      output.innerHTML = '';
+      const title = document.createElement('h2');
+      title.textContent = `Jadwalka 1..12`;
+      output.appendChild(title);
+
+      for (let n = 1; n <= 12; n++) {
+        const sub = document.createElement('div');
+        sub.style.margin = '8px 0 14px';
+        const h = document.createElement('h3');
+        h.style.margin = '0 0 6px';
+        h.textContent = `${n} × (1..12)`;
+        sub.appendChild(h);
+
+        const ul = document.createElement('ul');
+        ul.className = 'table-list';
+        for (let i = 1; i <= 12; i++) {
+          const li = document.createElement('li');
+          li.className = 'row';
+          li.innerHTML = `<span>${n} × ${i}</span><strong>${n * i}</strong>`;
+          ul.appendChild(li);
+        }
+        sub.appendChild(ul);
+        output.appendChild(sub);
+      }
+
+      if (logConsoleChk.checked) {
+        for (let n = 1; n <= 12; n++) {
+          console.group(`Jadwalka ${n}`);
+          for (let i = 1; i <= 12; i++) {
+            console.log(`${n} x ${i} = ${n * i}`);
+          }
+          console.groupEnd();
+        }
+      }
+    });
+
+    btnClear.addEventListener('click', () => {
+      Array.from(btnContainer.children).forEach(x => x.classList.remove('active'));
+      output.innerHTML = '<p class=\"note\">Waxba maad Doorna.</p>';
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key >= '1' && e.key <= '9') {
+        const num = parseInt(e.key, 10);
+        const btn = btnContainer.querySelector(`button[data-num='${num}']`);
+        btn && btn.click();
+      } else if (e.key === '0') { // 0 => 10
+        const btn = btnContainer.querySelector(`button[data-num='10']`);
+        btn && btn.click();
+      } else if (e.key === '-' || e.key === '_') { // - => 11
+        const btn = btnContainer.querySelector(`button[data-num='11']`);
+        btn && btn.click();
+      } else if (e.key === '=' || e.key === '+') { // = => 12
+        const btn = btnContainer.querySelector(`button[data-num='12']`);
+        btn && btn.click();
+      }
+    });
+
+  </script>
+</body>
+</html>
